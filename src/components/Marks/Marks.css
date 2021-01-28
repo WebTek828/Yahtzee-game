@@ -1,0 +1,31 @@
+.marks-container {
+  padding: 1rem 2rem;
+}
+.marks {
+  padding: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.3rem 0;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.upper {
+  margin-bottom: 1rem;
+}
+.heading {
+  font-weight: 200;
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding: 0.3rem;
+  text-transform: uppercase;
+  width: 26%;
+  margin: 1rem auto;
+}
+.total-score {
+  text-align: center;
+}
+.used {
+  text-decoration: line-through;
+}
