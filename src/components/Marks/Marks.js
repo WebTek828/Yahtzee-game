@@ -59,7 +59,12 @@ const Marks = (props) => {
       data: "fok",
       used: props.lowerMarks.fok.used,
     },
-    { left: "Full House", right: "25 points for a full house ", data: "fh" },
+    {
+      left: "Full House",
+      right: "25 points for a full house ",
+      data: "fh",
+      used: props.lowerMarks.fh.used,
+    },
     {
       left: "Small Straight",
       right: "30 points for a small straight",

@@ -58,12 +58,19 @@ class Game extends Component {
     for (let key in deleteCountInUpper) {
       deleteCountInUpper[key].count = "";
     }
+    const deleteCountInLower = { ...this.state.lower };
+    for (let key in deleteCountInLower) {
+      if (key !== "c") {
+        deleteCountInLower[key].val = "";
+      }
+    }
     const rollsLeft = this.state.rollsLeft - 1;
 
     this.setState({
       upper: deleteCountInUpper,
       rolling: true,
       assigned: false,
+      lower: deleteCountInLower,
     });
 
     setTimeout(() => {
@@ -142,10 +149,12 @@ class Game extends Component {
         s.sort((a, b) => a - b);
         return JSON.stringify(s) === JSON.stringify(straights);
       });
+      console.log(straights);
       if (smallStraightResult) {
         oldLower.ss.val = true;
       } else if (largeStraightResult) {
         oldLower.ls.val = true;
+        oldLower.ss.val = true;
       }
 
       if (
@@ -214,8 +223,14 @@ class Game extends Component {
   freezeDiceHandler = (e) => {
     const diceKind = e.target.dataset.kind;
     const oldDices = { ...this.state.dices };
-    oldDices[`dice${diceKind}`].freeze = !oldDices[`dice${diceKind}`].freeze;
-    this.setState({ dices: oldDices });
+    console.log(typeof this.state.rollsLeft);
+    if (this.state.rollsLeft !== 3) {
+      oldDices[`dice${diceKind}`].freeze = !oldDices[`dice${diceKind}`].freeze;
+      this.setState({ dices: oldDices });
+    } else {
+      alert("Roll Dice First.");
+    }
+
     const freezedDices = [];
     for (let key in this.state.dices) {
       if (this.state.dices[key].freeze) {
